@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Speaker : MonoBehaviour
+public class Speaker : CameraClickEvent
 {
     [SerializeField] private string id;
     public string Id => id;
@@ -22,6 +22,7 @@ public class Speaker : MonoBehaviour
     private void OnMouseDown()
     {
         if (!IsValid) return;
+        OnClick();
         BrowserBridge.Instance?.ObjectClicked(id);
     }
 }
