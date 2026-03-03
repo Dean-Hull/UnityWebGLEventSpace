@@ -500,9 +500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToControl: {fileID: 330585546}
-  xAngle: 0
-  yAngle: 45
-  distance: 10
+  xAngle: 28
+  yAngle: 55
+  distance: 20
   defaultOrbitPoint: {fileID: 145116673}
   rotationTouchCount: 1
   rotationXSensitivity: 10
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 2
 --- !u!65 &604016613
 BoxCollider:
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 1
 --- !u!1 &784319336
 GameObject:
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 4
 --- !u!65 &816103481
 BoxCollider:
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 8
 --- !u!65 &999993661
 BoxCollider:
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 10
 --- !u!65 &1152448714
 BoxCollider:
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 5
 --- !u!1 &1658443369
 GameObject:
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 3
 --- !u!1 &1912773755
 GameObject:
@@ -1793,7 +1793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 6
 --- !u!1 &1930520659
 GameObject:
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 7
 --- !u!65 &1930520662
 BoxCollider:
@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactive: 1
-  focusDistance: 10
+  focusDistance: 20
   id: 9
 --- !u!65 &2042474940
 BoxCollider:

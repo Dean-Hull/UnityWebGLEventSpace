@@ -110,7 +110,7 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         _currentPanOffset = Vector3.Lerp(_currentPanOffset, _panOffset, Time.deltaTime * panInertia);
 
         Quaternion rotation = Quaternion.Euler(_currentYAngle, _currentXAngle, 0);
-        Vector3 position = defaultOrbitPoint.position + rotation * new Vector3(0, 0, -_currentDistance);
+        Vector3 position = defaultOrbitPoint.position + _currentPanOffset + rotation * new Vector3(0, 0, -_currentDistance);
         _cameraTransform.SetPositionAndRotation(position, rotation);
     }
 
@@ -172,11 +172,8 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             if (eventData.pointerId == _firstPointerId)
             {
-                _firstPointerPosition = GetWorldPoint(eventData);
-                Vector2 delta = _firstPointerPosition - _lastFirstPointerPosition;
-                xAngle += delta.x * rotationXSensitivity;
-                yAngle -= delta.y * rotationYSensitivity;
-                _lastFirstPointerPosition = _firstPointerPosition;
+                xAngle += eventData.delta.x * rotationXSensitivity * 0.01f;
+                yAngle -= eventData.delta.y * rotationYSensitivity * 0.01f;
             }
         }
 
@@ -216,8 +213,8 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             if (eventData.pointerId == _firstPointerId)
             {
+                _firstPointerDetla = eventData.delta;
                 _firstPointerPosition = GetWorldPoint(eventData);
-                _lastPointerDistance = Vector2.Distance(_firstPointerPosition, _secondPointerPosition);
             }
             else if (eventData.pointerId == _secondPointerId)
             {
@@ -237,8 +234,8 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (_isMovingToNewPosition) return;
 
-        Vector3 movement = -cameraToControl.right * delta.x * panningXSensitivity;
-        movement -= (Quaternion.Euler(0f, _cameraTransform.eulerAngles.y, 0f) * Vector3.forward) * delta.y * panningYSensitivity;
+        Vector3 movement = -_cameraTransform.right * delta.x * panningXSensitivity;
+        movement -= Quaternion.Euler(0f, _cameraTransform.eulerAngles.y, 0f) * Vector3.forward * delta.y * panningYSensitivity;
         movement.y = 0f;
         _panOffset += movement;
     }
@@ -253,7 +250,7 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void SetCameraTarget(Transform target, float newDistance = -1f, float newXAngle = float.NaN, float newYAngle = float.NaN)
     {
-        defaultOrbitPoint.position = target.position;
+        _panOffset = target.position - defaultOrbitPoint.position;
 
         if (!float.IsNaN(newXAngle)) xAngle = newXAngle;
         if (!float.IsNaN(newYAngle)) yAngle = newYAngle;
@@ -268,7 +265,6 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private IEnumerator DoMoveCameraToPosition(float newXAngle, float newYAngle, float newDistance)
     {
         _isMovingToNewPosition = true;
-        xAngle = newXAngle;
         yAngle = newYAngle;
         distance = newDistance;
         yield return new WaitForEndOfFrame();
