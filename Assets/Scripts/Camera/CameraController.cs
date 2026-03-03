@@ -262,9 +262,7 @@ public class CameraController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void MoveCameraToPosition(float newXAngle, float newYAngle, float newDistance)
     {
-        xAngle = newXAngle;
-        yAngle = newYAngle;
-        if (newDistance > 0) distance = newDistance;
+        StartCoroutine(newDistance < 0 ? DoMoveCameraToPosition(newXAngle, newYAngle, distance) : DoMoveCameraToPosition(newXAngle, newYAngle, newDistance));
     }
 
     private IEnumerator DoMoveCameraToPosition(float newXAngle, float newYAngle, float newDistance)
