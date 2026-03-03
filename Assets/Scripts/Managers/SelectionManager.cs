@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeakerManager : MonoBehaviour
+public class SelectionManager : MonoBehaviour
 {
-    public static SpeakerManager Instance { get; private set; }
+    public static SelectionManager Instance { get; private set; }
 
     private Dictionary<string, Speaker> _speakerRegistry = new();
     private readonly object _lock = new();
