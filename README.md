@@ -17,7 +17,7 @@ The Unity WebGL 3D interactive environment component of the [LeadXP Virtual Even
 
 This project acts as the 3D viewport embedded inside the LeadXP platform. When a user clicks a speaker booth:
 
-1. `Speaker.OnMouseDown` fires → calls `BrowserBridge.ObjectClicked(id)`
+1. `Speaker.OnMouseDown` fires -> calls `BrowserBridge.ObjectClicked(id)`
 2. `BrowserBridge` calls the `NotifyObjectClicked` extern, invoking a JavaScript function in the host page
 3. The Next.js host receives the event and navigates to the selected speaker's profile
 
