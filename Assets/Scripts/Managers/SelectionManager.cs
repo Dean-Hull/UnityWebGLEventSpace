@@ -42,7 +42,7 @@ public class SelectionManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(id)) return null;
 
-        lock (_lock)        
+        lock (_lock)
         {
             _speakerRegistry.TryGetValue(id, out var speaker);
             return speaker;
@@ -52,5 +52,20 @@ public class SelectionManager : MonoBehaviour
     public bool HasSpeaker(string id)
     {
         return _speakerRegistry.ContainsKey(id);
+    }
+
+    public void Select(string id)
+    {
+        Debug.Log("Unity received selection: " + id);
+
+        Speaker speaker = Get(id);
+
+        if (speaker == null)
+        {
+            Debug.LogWarning("Speaker not found: " + id);
+            return;
+        }
+
+        speaker.OnClick();
     }
 }
