@@ -32,7 +32,7 @@ Assets/
     │   ├── CameraController.cs    # Orbit / pan / zoom with touch & mouse
     │   └── CameraClickEvent.cs    # Base class; focuses camera on a clicked object
     ├── Interaction/
-    │   └── ClickHandler.cs        # Generic click → BrowserBridge
+    │   └── ClickHandler.cs        # Generic click -> BrowserBridge
     ├── Managers/
     │   └── SelectionManager.cs    # Singleton registry of active Speaker instances
     └── Speaker/
