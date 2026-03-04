@@ -72,5 +72,3 @@ The resulting build can be served alongside the Next.js app or hosted on a CDN, 
 | Constant  | `SCREAMING_SNAKE_CASE`                                        |
 | Interface | `IInterface`                                                  |
 | Enum      | Type: `PascalCase` · State: `SCREAMING_SNAKE_CASE`            |
-
----
